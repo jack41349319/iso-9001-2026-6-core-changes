@@ -116,6 +116,7 @@
         <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
         <span id="fs-label">全螢幕投影</span>
       </button>
+      <button id="lang-toggle" type="button" onclick="toggleLanguage()" aria-label="切換中文與英文" class="ml-2 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-200 text-xs font-extrabold border border-cyan-400/60 shadow-md transition" title="切換中文 / English">🌐 <span>中 / EN</span></button>
     </div>
   </header>
 
@@ -427,6 +428,26 @@
         label.innerText = "全螢幕投影";
       }
     });
+  
+    // Bilingual language switch
+    const languageMap = {"ISO 9001:2026 改版 6 大核心變革 | 16:9 高畫質宣導簡報":"ISO 9001:2026 — Six Core Changes | 16:9 Executive Briefing","ISO/TC 176 官方最新標準解析":"ISO/TC 176 Official Standard Update","ISO 9001:2026 第六版改版核心 — 1 頁高階簡報投影圖版":"ISO 9001:2026 Sixth Edition — One-Page Executive Presentation","切換大白話聚焦":"Plain-Language Focus","匯出 PDF / 列印":"Export PDF / Print","全螢幕投影":"Fullscreen Presentation","結束投影":"Exit Presentation","睽違 10 餘年最大規格演進 · 2015 ➔ 2026":"The biggest revision in over a decade · 2015 ➔ 2026","調和結構 (Harmonized Structure)":"Harmonized Structure","內建 20 項核心定義 · 氣候常態化 · 10 章整併為 10.1":"20 core definitions · Climate normalized · 10 clauses consolidated into 10.1","ISO 9001:2026 核心重大變革":"ISO 9001:2026 Core Changes","6 大實務落地關鍵焦點":"6 Practical Implementation Focus Areas","一秒大白話：":"In plain language:","差異：":"Key difference:","查核：":"Audit evidence:","1. 氣候變遷入規與因應判定":"1. Climate change context and response determination","2. 品質文化與誠信道德行為":"2. Quality culture, integrity and ethical conduct","3. 風險與機會徹底分流管制":"3. Separate control of risks and opportunities","4. 變更管理嚴密化 (7 大要件)":"4. Strengthened change management (7 requirements)","5. 遠距辦公、防倦怠與數位化":"5. Remote work, burnout prevention and digitalization","6. 敏捷迭代解套與斷鏈顧客溝通":"6. Agile iteration and customer communication during disruption","「做品質不能再推說氣候跟我無關，必須明確判定是否衝擊原料、供貨與良率！」":"“Quality can no longer dismiss climate change; determine its impact on materials, supply and yield.”","4.1 強制評估氣候關聯；4.2(c) 需明確決定哪些相關方要求「真正納入 QMS 處理」。":"4.1 requires climate relevance assessment; 4.2(c) requires a clear decision on which interested-party requirements enter the QMS.","更新 SWOT / 情勢表補氣候欄位；利害關係人表加增「納入 QMS 承諾」勾選欄。":"Update the SWOT/context review with climate factors; add a “QMS commitment” field to the interested-party register.","「老闆要帶頭建立防造假風氣；基層同仁必須敢於誠實通報缺陷，不能掩蓋數據！」":"“Leadership must build an anti-falsification culture; people must report defects honestly instead of hiding data.”","高層領導承諾新增「促進品質文化與道德」；7.3(e) 將誠信倫理列入全員認知。":"Leadership now promotes quality culture and ethics; 7.3(e) makes integrity and ethics part of everyone’s awareness.","建立內部揭弊/吹哨管道、防數據篡改程序；外部稽核將抽問一線同仁誠信通報。":"Establish whistleblowing and anti-tampering controls; external auditors may interview frontline staff about integrity reporting.","「防守（中斷自救）與進攻（AI開源）分開管理，不能再同一張表混水摸魚！」":"“Defense (recovery from disruption) and offense (AI and innovation) must be managed separately—not mixed in one form.”","6.1.2 專注負面衝擊與「營運中斷復原韌性」；6.1.3 專注新技術與開源效益；拆開檢討。":"6.1.2 focuses on negative impacts and operational resilience; 6.1.3 focuses on new technology and opportunity benefits—review them separately.","拆分風險評估表與機會登錄簿；管理審查報告須分列「避險防守」與「機會開源」。":"Separate the risk assessment and opportunity register; management review must distinguish defense and opportunity.","「換機台或改製程不能只簽名；誰該知情、成效如何量測、誰來驗收都要交代！」":"“Changing equipment or processes is more than a signature; define who is informed, how effectiveness is measured and who accepts the result.”","要件由 4 項增至 7 項：強制補足資源與資訊(c)、溝通(e)、成效監測(f)、結果審查(g)。":"Requirements increase from 4 to 7: resources and information (c), communication (e), effectiveness monitoring (f) and results review (g).","全面升級 MOC 申請單，增列「變更通知矩陣」與變更後 1~3 個月的「成效驗收報告」。":"Upgrade the MOC form with a change-notification matrix and an effectiveness acceptance report 1–3 months after the change.","「WFH 設備算基礎設施；作業環境要防過勞，經驗要在數位系統活化分享！」":"“WFH equipment is infrastructure; the work environment must prevent burnout, and knowledge must be shared digitally.”","基礎設施納入遠距/混合；心理環境列入「防止倦怠(burnout)」；知識要求數位保存與分享。":"Infrastructure includes remote/hybrid work; the psychological environment includes burnout prevention; knowledge must be digitally stored and shared.","檢視遠端作業資安與設備維護規範、防過勞 EAP 機制；建立雲端 Wiki/KM 知識庫。":"Review remote-work security and equipment maintenance, provide burnout-prevention support, and build a cloud Wiki/KM knowledge base.","「研發不用再造假瀑布文件，官方認可邊做邊改衝刺；產線出事要主動通報客戶！」":"“R&D need not fake waterfall documents; iterative sprints are recognized, and customers must be notified when disruption occurs.”","8.3 備註正式認可迭代開發(Iterative Cycles)；8.2.1 強制納入「營運中斷時之應變資訊通報」。":"The 8.3 note recognizes iterative development; 8.2.1 requires response communication during operational disruption.","敏捷開發直接採 Sprint Review 為審查紀錄；訂定重大斷鏈/中斷對外通報 SLA 程序。":"Use Sprint Reviews as development review records; define an SLA for external communication during major disruption.","企業落地三步走：":"Three steps for implementation:","差距清查":"Gap assessment","（拆分風險/機會，補入氣候與中斷韌性）":"(separate risks/opportunities; add climate and resilience)","表單升級":"Form upgrades","（擴充 MOC 7大要素，修正 10.1 條號引用）":"(expand the 7 MOC requirements; correct 10.1 references)","全員共識":"Organization-wide alignment","（落實品質誠信宣導，雙軌管理審查）":"(embed quality integrity; dual-track management review)","TC 176 委員會官方修訂比照":"Aligned with TC 176 committee revisions","刪除 10.3 及 Annex B":"10.3 and Annex B removed"};
+    const bilingualNodes = [];
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let textNode;
+    while (textNode = walker.nextNode()) {
+      const key = textNode.nodeValue.trim();
+      if (languageMap[key]) bilingualNodes.push({ node: textNode, prefix: textNode.nodeValue.slice(0, textNode.nodeValue.indexOf(key)), suffix: textNode.nodeValue.slice(textNode.nodeValue.indexOf(key) + key.length), zh: key, en: languageMap[key] });
+    }
+    let currentLanguage = 'zh';
+    function setLanguage(lang) {
+      currentLanguage = lang;
+      bilingualNodes.forEach(item => { item.node.nodeValue = item.prefix + (lang === 'en' ? item.en : item.zh) + item.suffix; });
+      document.documentElement.lang = lang === 'en' ? 'en' : 'zh-TW';
+      document.title = lang === 'en' ? languageMap['ISO 9001:2026 改版 6 大核心變革 | 16:9 高畫質宣導簡報'] : 'ISO 9001:2026 改版 6 大核心變革 | 16:9 高畫質宣導簡報';
+      const toggle = document.getElementById('lang-toggle');
+      if (toggle) { toggle.querySelector('span').innerText = lang === 'en' ? 'EN / 中' : '中 / EN'; toggle.setAttribute('aria-label', lang === 'en' ? 'Switch to Chinese' : 'Switch to English'); }
+    }
+    function toggleLanguage() { setLanguage(currentLanguage === 'zh' ? 'en' : 'zh'); }
   </script>
 </body>
 </html>
